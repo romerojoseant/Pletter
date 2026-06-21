@@ -63,6 +63,11 @@ struct pakdata {
 #ifdef __APPLE__
 char sourcefilename[PATH_MAX];
 char destfilename[PATH_MAX];
+#elif defined(__linux__)
+// linux no define MAX_PATH, set a secure max value
+#define LINUX_MAX_PATH 4096
+char sourcefilename[LINUX_MAX_PATH];
+char destfilename[LINUX_MAX_PATH];
 #else
 char sourcefilename[MAX_PATH];
 char destfilename[MAX_PATH];
